@@ -1,7 +1,12 @@
 set t_Co=256
+set number
 syntax on
 
+let g:vim_json_syntax_conceal = 0
+
 call plug#begin('~/.vim/plugged')
+
+Plug 'bling/vim-airline'
 
 Plug 'vim-syntastic/syntastic'
 
@@ -21,8 +26,7 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'tpope/vim-sensible' 
 
-Plug 'no/vim-json'
+Plug 'elzr/vim-json'
 
-Plug 'ctrlpvim/ctrlp.vim '
 
 call plug#end()
