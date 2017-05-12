@@ -197,18 +197,23 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #22262d
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+set $bg-color 	                 #2f343f
+set $inactive-bg-color           #22262d
+set $focused-bg-color            #b441fc
+set $focused-inactive-bg-color   #4b1c68
+set $focused-text-color          #ffffff
+set $indicator-color             #ebccff
+set $text-color                  #f3f4f5
+set $inactive-text-color         #676E7D
+set $focused-inactive-text-color #d1d1d1
+set $urgent-bg-color             #E53935
 
 # window colors
-#                       border              background         text                 indicator
-client.unfocused          $bg-color           $bg-color          $text-color          #00ff00
-client.focused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+#                         border                      background                 text                         indicator
+client.unfocused          $bg-color                   $bg-color                  $text-color                  $indicator-color
+client.focused            $focused-bg-color           $focused-bg-color          $focused-text-color          $indicator-color
+client.focused_inactive   $focused-inactive-bg-color  $focused-inactive-bg-color $focused-inactive-text-color $indicator-color
+client.urgent             $urgent-bg-color            $urgent-bg-color           $text-color                  $indicator-color
 
 # bar
 bar {
@@ -216,10 +221,10 @@ bar {
 	colors {
 		background $bg-color
 	    	separator #757575
-		#                  border             background         text
+		#                   border             background         text
 		inactive_workspace  $bg-color          $bg-color          $text-color
-		focused_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+		focused_workspace   $focused-bg-color  $focused-bg-color  $focused-text-color
+		urgent_workspace    $urgent-bg-color   $urgent-bg-color   $text-color
 	}
 }
 
