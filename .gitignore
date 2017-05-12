@@ -15,7 +15,9 @@
 !.i3/scripts/volume
 !.i3/scripts/wifi
 !.config/
-!.config/temite
+!.config/temite/
 !.config/termite/config
+!.config/rofi/
+!.config/rofi/config
 !readme.md
 !.gitignore

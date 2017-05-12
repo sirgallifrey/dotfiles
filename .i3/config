@@ -228,13 +228,14 @@ bar {
 	}
 }
 
-bindsym $mod+d exec rofi -show drun -lines 6 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "pango:DejaVu Sans Mono 18"
+bindsym $mod+d exec rofi -show drun -eh 2 -opacity 85  -font "pango:DejaVu Sans Mono 18"
 
 #execute stuff
 
 exec --no-startup-id nm-applet
 
-exec_always --no-startup-id feh --bg-scale "/home/adilson/wallpapers/wallpaper.png"
+#exec_always --no-startup-id feh --bg-scale "/home/adilson/wallpapers/wallpaper.png"
+exec_always --no-startup-id /home/adilson/.i3/scripts/wallpapery
 
 # exec --no-startup-id xcompmgr
 
