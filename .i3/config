@@ -228,7 +228,8 @@ bar {
 	}
 }
 
-bindsym $mod+d exec rofi -show drun -eh 2 -opacity "85"  -font "pango:DejaVu Sans Mono 18"
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+p exec teiler
 
 #execute stuff
 

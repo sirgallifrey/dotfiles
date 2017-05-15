@@ -2,6 +2,9 @@
 ! ROFI Color theme
 ! ------------------------------------------------------------------------------
 
+rofi.font: pango:DejaVu Sans Mono 18
+rofi.eh: 2
+
 rofi.color-enabled: true
 rofi.color-window: #2f343f, argb:0000000, argb:0000000
 rofi.color-normal: #2f343f, #e5e5e5, #2f343f, #b441fc, #eee8d5
