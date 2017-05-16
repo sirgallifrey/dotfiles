@@ -1,7 +1,10 @@
 #!/bin/bash
-while [ "$select" != "NO" -a "$select" != "YES" ]; do
-    select=$(echo -e 'NO\nYES' | rofi -dmenu -p 'Shutdown?' )
-    [ -z "$select" ] && exit 0
-done
-[ "$select" = "NO" ] && exit 0
-i3-msg exit
+$select="noop"
+select=$(echo -e 'Cancel\nPoweroff\nReboot\nHalt\nLogoff\nReboot Windows' | rofi -dmenu -p 'Exit menu' )
+[ "$select" = "Cancel" ] && exit 0
+[ "$select" = "Poweroff" ] && poweroff
+[ "$select" = "Reboot" ] && reboot
+[ "$select" = "halt" ] && halt
+[ "$select" = "Poweroff" ] && poweroff
+
+exit 0
