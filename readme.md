@@ -1,7 +1,7 @@
 # install deps:
 
-pacman -S termite libqalculate xcompmgr ffmpeg chromium scrot playerctl sysstat          
-yaourt -S ttf-font-awesome
+pacman -S termite libqalculate xcompmgr ffmpeg chromium scrot playerctl sysstat rofi dunst          
+yaourt -S ttf-font-awesome pasystray-gtk3-standalone 
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

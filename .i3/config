@@ -14,6 +14,8 @@
 # udev (?)
 # compton
 # rofi
+# dunst
+# pasystray-gtk3-standalone  aur
 # #!/bin/bash
 #if synclient -l | grep "TouchpadOff .*=.*0" ; then
 #    synclient TouchpadOff=1 ;
@@ -228,7 +230,7 @@ bar {
 	}
 }
 
-bindsym $mod+d exec rofi -show drun -eh 2 -opacity "85"  -font "pango:DejaVu Sans Mono 18"
+bindsym $mod+d exec rofi -show drun -eh 2 -font "pango:DejaVu Sans Mono 18"
 
 #execute stuff
 
