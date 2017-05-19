@@ -5,6 +5,6 @@ select=$(echo -e 'Cancel\nPoweroff\nReboot\nHalt\nLogoff\nReboot Windows' | rofi
 [ "$select" = "Poweroff" ] && poweroff
 [ "$select" = "Reboot" ] && reboot
 [ "$select" = "halt" ] && halt
-[ "$select" = "Poweroff" ] && poweroff
+[ "$select" = "Logoff" ] && i3-msg exit
 
 exit 0

@@ -1,8 +1,8 @@
 # deps:
 # termite
 # libqalculate
-# xcompmgr
-# nm-applet
+# compton
+# nm-apple (network-manager-applet)
 # ffmpeg
 # chromium
 # scrot
