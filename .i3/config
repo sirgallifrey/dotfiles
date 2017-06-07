@@ -235,6 +235,7 @@ bindsym $mod+p exec teiler
 
 #execute stuff
 
+exec --no-startup-id $HOME/.i3/ssh.sh
 exec --no-startup-id nm-applet
 
 #exec_always --no-startup-id feh --bg-scale "/home/adilson/wallpapers/wallpaper.png"

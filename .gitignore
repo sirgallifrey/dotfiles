@@ -4,6 +4,7 @@
 !.i3/
 !.i3/config
 !.i3/i3blocks.conf
+!.i3/ssh.sh
 !.i3/scripts/
 !.i3/scripts/bandwidth
 !.i3/scripts/cpu_usage
