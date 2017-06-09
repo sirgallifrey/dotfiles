@@ -15,7 +15,8 @@
 !.i3/scripts/memory
 !.i3/scripts/volume
 !.i3/scripts/wifi
-!.i3/scripts/wallpapery
+!.i3/scripts/wallpaper
+!.i3/scripts/sound_menu.sh
 !.config/
 !.config/temite/
 !.config/termite/config
