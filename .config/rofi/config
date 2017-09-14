@@ -14,5 +14,6 @@ rofi.color-urgent: argb:02f343f, #dc322f, argb:02f343f, #dc322f, #fdf6e3
 
 rofi.lines: 8
 rofi.bw: 0
-rofi.padding: 500
-rofi.width: 100
+rofi.padding: 40%
+rofi.width: 100%
+rofi.fullscreen: true

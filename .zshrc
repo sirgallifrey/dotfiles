@@ -1,7 +1,9 @@
 export PATH=~/bin:$PATH
 export PATH=~/npm/bin:$PATH
+export PATH=~/.gem/ruby/2.4.0/bin:$PATH
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export TERM="xterm-256color" 
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
@@ -23,10 +25,7 @@ plugins=(git)
 function clone {
     (cd ~/Projects; git clone "$@")
 }
-alias cd-projects='cd ~/Projects'
-alias cdp=cd-projects
 alias npm="npm --color=always"
-alias ls="ls -lh --color"
 
 if [ -r ~/.zsh_functions ]; then
    source ~/.zsh_functions
@@ -51,15 +50,12 @@ antigen bundle git-flow-avh
 antigen bundle github
 antigen bundle pip
 antigen bundle lol
-antigen bundle command-not-found
 antigen bundle history
 antigen bundle unixorn/autoupdate-antigen.zshplugin
-antigen bundle supercrabtree/k
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-antigen bundle Vifon/deer
 
 # Load the theme.
 antigen theme bhilburn/powerlevel9k powerlevel9k
@@ -69,3 +65,12 @@ antigen apply
 autoload -U deer
 zle -N deer
 bindkey '\ek' deer
+autoload -Uz compinit
+compinit
+if [ -r ~/.zsh_completions ]; then
+    source ~/.zsh_completions
+fi
+
+# tabtab source for rilix package
+# uninstall by removing these lines or running `tabtab uninstall rilix`
+[[ -f /home/adilson/Projects/rilix-global/cli/node_modules/tabtab/.completions/rilix.zsh ]] && . /home/adilson/Projects/rilix-global/cli/node_modules/tabtab/.completions/rilix.zsh

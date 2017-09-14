@@ -22,5 +22,7 @@
 !.config/termite/config
 !.config/rofi/
 !.config/rofi/config
+!.config/gtk-3.0/
+!.config/gtk-3.0/gtk.css
 !readme.md
 !.gitignore
