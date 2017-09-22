@@ -61,16 +61,3 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme bhilburn/powerlevel9k powerlevel9k
 # Tell antigen that you're done.
 antigen apply
-
-autoload -U deer
-zle -N deer
-bindkey '\ek' deer
-autoload -Uz compinit
-compinit
-if [ -r ~/.zsh_completions ]; then
-    source ~/.zsh_completions
-fi
-
-# tabtab source for rilix package
-# uninstall by removing these lines or running `tabtab uninstall rilix`
-[[ -f /home/adilson/Projects/rilix-global/cli/node_modules/tabtab/.completions/rilix.zsh ]] && . /home/adilson/Projects/rilix-global/cli/node_modules/tabtab/.completions/rilix.zsh
