@@ -33,6 +33,11 @@ function install_apps () {
     vim -c :PlugInstall
 }
 
+function create_directories () {
+    mkdir -p ~/projects
+}
+
 copy_files
+create_directories
 create_files
 install_apps

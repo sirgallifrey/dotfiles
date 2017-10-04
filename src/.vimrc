@@ -1,5 +1,7 @@
 set t_Co=256
 set number
+set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
+set encoding=utf-8
 syntax on
 
 let g:vim_json_syntax_conceal = 0
