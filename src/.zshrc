@@ -5,6 +5,10 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export TERM="xterm-256color" 
 
+if [[ $(which yarn) ]]; then
+  export PATH=$(yarn global dir)/node_modules/.bin:$PATH
+fi
+
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
 POWERLEVEL9K_STATUS_VERBOSE=false
