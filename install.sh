@@ -22,7 +22,7 @@ function create_files () {
 function install_apps () {
     sudo pacman -S vim termite zsh htop powerline powerline-fonts
 
-    yaourt -S ttf-font-awesome
+    yaourt -S ttf-font-awesome yarn
 
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
