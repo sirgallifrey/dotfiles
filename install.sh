@@ -20,9 +20,9 @@ function create_files () {
 }
 
 function install_apps () {
-    sudo pacman -S vim termite zsh htop powerline powerline-fonts
+    sudo pacman -S vim termite zsh htop powerline powerline-fonts nodejs dlang docker docker-compose
 
-    yaourt -S ttf-font-awesome yarn
+    yaourt -S ttf-font-awesome yarn visual-studio-code
 
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
