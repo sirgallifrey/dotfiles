@@ -63,10 +63,14 @@ let mapleader = ","
 noremap <leader>q :bp<CR>
 noremap <leader>w :bn<CR>
 
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
 " windows like clipboard
 " yank to and paste from the clipboard without prepending "* to commands
-let &clipboard = has('unnamedplus') ? 'unnamedplus' : 'unnamed'
-map c-x and c-v to work as they do in windows, only in insert mode
+let clipboard = has('unnamedplus') ? 'unnamedplus' : 'unnamed'
+" map c-x and c-v to work as they do in windows, only in insert mode
 vm <c-x> "+x
 vm <c-c> "+y
 cno <c-v> <c-r>+
@@ -75,6 +79,19 @@ exe 'ino <script> <C-V>' paste#paste_cmd['i']
 " save with ctrl+s
 nmap <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>a
+
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
 
 " remove the .ext~ files, but not the swapfiles
 set nobackup
@@ -127,7 +144,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'sheerun/vim-wombat-scheme'
 
-Plug 'vim-scripts/FuzzyFinder'
+" Plug 'vim-scripts/FuzzyFinder'
 
 Plug 'vim-scripts/L9'
 
@@ -164,12 +181,12 @@ Plug 'fholgado/minibufexpl.vim'
 call plug#end()
 
 " start NERDTree on start-up and focus active window
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd p
 
 " map FuzzyFinder
-noremap <leader>b :FufBuffer<cr>
-noremap <leader>f :FufFile<cr>
+" noremap <leader>b :FufBuffer<cr>
+" noremap <leader>f :FufFile<cr>
 
 " set the color theme to wombat256
 colorscheme wombat

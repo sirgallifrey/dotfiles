@@ -4,6 +4,19 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export TERM="xterm-256color" 
 export usb=/run/media/$(whoami)/
+export RUST_BACKTRACE=1
+
+if [[ $(which ksshaskpass) ]]; then
+  export SSH_ASKPASS=ksshaskpass
+fi
+
+# start ssh agent
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-thing)" > /dev/null;
+fi
 
 alias ..="cd .."
 alias 1..="cd .."
