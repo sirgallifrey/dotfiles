@@ -6,9 +6,16 @@ export TERM="xterm-256color"
 export usb=/run/media/$(whoami)/
 export RUST_BACKTRACE=1
 
-if [[ $(which ksshaskpass) ]]; then
-  export SSH_ASKPASS=ksshaskpass
+#TODO: use something other than pacman -Q
+if [[ $(pacman -Q | grep x11-ssh-askpass) ]]; then
+  export SSH_ASKPASS=x11-ssh-askpass
 fi
+
+# Get color support for 'less'
+export LESS="--RAW-CONTROL-CHARS"
+
+# Use colors for less, man, etc.
+[[ -f ~/.less_termcap ]] && . ~/.less_termcap
 
 # start ssh agent
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
@@ -26,19 +33,11 @@ alias 4..="cd ../../../.."
 alias 5..="cd ../../../../.."
 alias 6..="cd ../../../../../.."
 alias ~="cd ~"
-alias cz="cd -"
-alias dc="cd ~/Documents"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
-alias opt="cd /opt/"
 
 ## where media automounts in archlinux
 alias usb="cd /run/media/$(whoami)/"
 alias media="cd /run/media/$(whoami)/"
-
-alias g="git"
-alias npm="npm --color=always"
 
 alias reload="exec ${SHELL} -l"
 
@@ -84,7 +83,6 @@ alias hgrep="fc -El 0 | grep"
 alias sortnr='sort -n -r'
 alias unexport='unset'
 
-
 if [[ $(which yarn) ]]; then
   export PATH=$(yarn global dir)/node_modules/.bin:$PATH
 fi
@@ -104,6 +102,7 @@ POWERLEVEL9K_STATUS_VERBOSE=false
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+
 if [[ -n "$POWERLEVEL9K_INSTALLATION_PATH" ]]; then
 else
   if [[ -n "$ADOTDIR" ]]; then
@@ -118,7 +117,6 @@ plugins=(git)
 function clone {
   (cd ~/projects; git clone "$@")
 }
-
 
 if [ -r ~/.zsh_functions ]; then
   source ~/.zsh_functions
