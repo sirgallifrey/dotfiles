@@ -28,7 +28,7 @@ PKG_DESKTOP+="accountsservice light-locker "
 PKG_DESKTOP+="exo garcon gtk-xfce-engine xfce4-appfinder xfce4-power-manager "
 PKG_DESKTOP+="xfce4-settings xfconf xfdesktop xfwm4 xfcwm4-themes  xfce4-panel "
 # Using the git version until 4.13 comes out
-PKG_DESKTOP_AUR+="xfce4-session-git "
+PKG_DESKTOP_AUR+="xfce4-session-git mugshot "
 
 # File manager
 PKG_DESKTOP+="thunar thunar-volman thunar-archive-plugin tumbler file-roller "
@@ -44,6 +44,7 @@ PKG_DESKTOP+="libcanberra libcanberra-pulse "
 PKG_DESKTOP+="arc-gtk-theme arc-icon-theme gnome-themes-standard "
 PKG_DESKTOP+="gtk-engine-murrine elementary-icon-theme "
 PKG_DESKTOP+="faenza-icon-theme papirus-icon-theme deepn-icon-theme "
+PKG_DESKTOP+="archlinux-wallpaper "
 
 # Network
 PKG_DESKTOP+="networkmanager network-manager-applet dnsmasq avahi nss-mdns "
