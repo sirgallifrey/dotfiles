@@ -44,7 +44,6 @@ PKG_DESKTOP+="libcanberra libcanberra-pulse "
 PKG_DESKTOP+="arc-gtk-theme arc-icon-theme gnome-themes-standard "
 PKG_DESKTOP+="gtk-engine-murrine elementary-icon-theme "
 PKG_DESKTOP+="faenza-icon-theme papirus-icon-theme deepn-icon-theme "
-PKG_DESKTOP+="archlinux-wallpaper "
 
 # Network
 PKG_DESKTOP+="networkmanager network-manager-applet dnsmasq avahi nss-mdns "
