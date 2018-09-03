@@ -7,8 +7,9 @@ export usb=/run/media/$(whoami)/
 export RUST_BACKTRACE=1
 
 #TODO: use something other than pacman -Q
+# wow x11-ssh-askpass is ugly, what was I thinking!
 if [[ $(pacman -Q | grep x11-ssh-askpass) ]]; then
-  export SSH_ASKPASS=x11-ssh-askpass
+  export SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
 fi
 
 # Get color support for 'less'
