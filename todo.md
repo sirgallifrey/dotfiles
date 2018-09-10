@@ -9,3 +9,6 @@
 - pgmyadmin 3
 - rustup
 
+# Wallpapers
+
+maybe publish as separate repo/AUR package.
