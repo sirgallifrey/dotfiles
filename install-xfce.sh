@@ -23,17 +23,23 @@ PKG_DESKTOP+="libva-intel-driver libvdpau-va-gl "
 PKG_DESKTOP+="lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings "
 PKG_DESKTOP+="accountsservice light-locker "
 
+# system
+PKG_DESKTOP+="ntp ufw "
+
 # xfce4
 # Not using xfce4-terminal, termite is a simpler solution 
 PKG_DESKTOP+="exo garcon gtk-xfce-engine xfce4-appfinder xfce4-power-manager "
 PKG_DESKTOP+="xfce4-settings xfconf xfdesktop xfwm4 xfcwm4-themes  xfce4-panel "
+# why mugshot is only in aur?
+PKG_DESKTOP_AUR+="mugshot "
 # Using the git version until 4.13 comes out
-PKG_DESKTOP_AUR+="xfce4-session-git mugshot "
+PKG_DESKTOP_AUR+="xfce4-session-git "
 
 # File manager
 PKG_DESKTOP+="thunar thunar-volman thunar-archive-plugin tumbler file-roller "
 PKG_DESKTOP+="catfish mlocate gvfs udisks2 thunar-media-tags-plugin "
 PKG_DESKTOP+="ffmpegthumbnailer freetype2 libgsf libopenraw poppler-glib "
+PKG_DESKTOP+="p7zip "
 
 # Sound
 PKG_DESKTOP+="pulseaudio paprefs "
@@ -73,7 +79,7 @@ PKG_DESKTOP_AUR+="ksuperkey "
 
 # apps
 PKG_DESKTOP+="chromium mousepad ristretto xfce4-artwork xfce4-taskmanager "
-#TODO: create a Developer install script to install Vscode, rust, node, docker, etc
+#TODO: create a Developer install script to install Vscode, rust, node, docker, elixir, etc
 PKG_DESKTOP_AUR+="visual-studio-code-bin "
 
 # xfce4 plugins
@@ -93,15 +99,38 @@ sudo pacman -S --needed --noconfirm ${PKG_DESKTOP}
 yaourt -S --needed --noconfirm ${PKG_DESKTOP_AUR}
 
 # Config lightdm to use gtk-greeter
-GREETER_LFROM="# greeter-session = Session to load for greeter"
-GREETER_LTO="greeter-session = lightdm-gtk-greeter"
-sudo sed -i "s/${GREETER_LFROM}/${GREETER_LTO}/" /etc/lightdm/lightdm.conf
+GREETER_CONF="greeter-session=lightdm-gtk-greeter"
+GREETER_SCRIPT_CONF="greeter-setup-script=xset b off"
+
+if [[ ! $(cat /etc/lightdm/lightdm.conf | grep -v "^#" | grep greeter-session) ]]; then
+  sudo sed -i "/^\[Seat\:\*\]/a${GREETER_CONF}" /etc/lightdm/lightdm.conf
+fi
+
+if [[ ! $(cat /etc/lightdm/lightdm.conf | grep -v "^#" | grep greeter-setup-script) ]]; then
+  sudo sed -i "/^\[Seat\:\*\]/a${GREETER_SCRIPT_CONF}" /etc/lightdm/lightdm.conf
+fi
 
 # Try DE first to see if it works
 sudo systemctl start lightdm.service
 
 # Enable DE if it works and you want to start it at boot
 sudo systemctl enable lightdm.service
+
+# Enable ntp
+sudo systemctl enable ntpd.service
+sudo systemctl start ntpd.service
+
+# Enable ufw
+sudo systemctl enable ufw.service
+sudo systemctl start ufw.service
+
+#enable ahavi
+MDSN_CONF="mdns4_minimal [NOTFOUND=return]"
+if [[ ! $(cat /etc/nsswitch.conf | grep "${MDSN_CONF}") ]]; then
+  sudo sed -r "s/(hosts\:.*)( resolve)/\1 ${MDSN_CONF}\2 /" /etc/nsswitch.conf
+fi
+sudo systemctl enable avahi-daemon.service
+sudo systemctl start avahi-daemon.service
 
 # Set color on pacman
 sudo sed -i 's/#Color/Color/' /etc/pacman.conf
