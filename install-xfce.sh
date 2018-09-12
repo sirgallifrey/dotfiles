@@ -79,6 +79,7 @@ PKG_DESKTOP_AUR+="ksuperkey "
 
 # apps
 PKG_DESKTOP+="chromium mousepad ristretto xfce4-artwork xfce4-taskmanager "
+PKG_DESKTOP+="galculator "
 #TODO: create a Developer install script to install Vscode, rust, node, docker, elixir, etc
 PKG_DESKTOP_AUR+="visual-studio-code-bin "
 
