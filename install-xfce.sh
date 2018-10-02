@@ -29,7 +29,7 @@ PKG_DESKTOP+="ntp ufw "
 # xfce4
 # Not using xfce4-terminal, termite is a simpler solution 
 PKG_DESKTOP+="exo garcon gtk-xfce-engine xfce4-appfinder xfce4-power-manager "
-PKG_DESKTOP+="xfce4-settings xfconf xfdesktop xfwm4 xfcwm4-themes  xfce4-panel "
+PKG_DESKTOP+="xfce4-settings xfconf xfdesktop xfwm4 xfwm4-themes  xfce4-panel "
 # why mugshot is only in aur?
 PKG_DESKTOP_AUR+="mugshot "
 # Using the git version until 4.13 comes out
@@ -49,7 +49,7 @@ PKG_DESKTOP+="libcanberra libcanberra-pulse "
 # (Fallback) Themes
 PKG_DESKTOP+="arc-gtk-theme arc-icon-theme gnome-themes-standard "
 PKG_DESKTOP+="gtk-engine-murrine elementary-icon-theme "
-PKG_DESKTOP+="faenza-icon-theme papirus-icon-theme deepn-icon-theme "
+PKG_DESKTOP+="faenza-icon-theme papirus-icon-theme deepin-icon-theme "
 
 # Network
 PKG_DESKTOP+="networkmanager network-manager-applet dnsmasq avahi nss-mdns "
@@ -128,7 +128,7 @@ sudo systemctl start ufw.service
 #enable ahavi
 MDSN_CONF="mdns4_minimal [NOTFOUND=return]"
 if [[ ! $(cat /etc/nsswitch.conf | grep "${MDSN_CONF}") ]]; then
-  sudo sed -r "s/(hosts\:.*)( resolve)/\1 ${MDSN_CONF}\2 /" /etc/nsswitch.conf
+  sudo sed -r -i "s/(hosts\:.*)( resolve)/\1 ${MDSN_CONF}\2 /" /etc/nsswitch.conf
 fi
 sudo systemctl enable avahi-daemon.service
 sudo systemctl start avahi-daemon.service
@@ -138,6 +138,14 @@ sudo sed -i 's/#Color/Color/' /etc/pacman.conf
 
 # set light-locker
 xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command --lock" --create -t string
+
+# hibernate configuration
+sudo mkdir -p /etc/systemd/sleep.conf.d
+sudo sh -c 'printf "[Sleep]\nHibernateMode=shutdown" > /etc/systemd/sleep.conf.d/hibernatemode.conf'
+
+# enable swap file
+sudo sh -c 'printf "vm.swappiness=10" > /etc/sysctl.d/99-sysctl.conf'
+
 
 # copy config files
 copy_files
