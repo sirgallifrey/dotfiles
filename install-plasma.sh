@@ -27,14 +27,22 @@ PKG_DESKTOP+="ntp ufw "
 
 # plasma
 # for now, iḿ installing everyting on plasma group until I figure out what I don't need. 
-PKG_DESKTOP+="plasma kde-applications partitionmanager "
+PKG_DESKTOP+="plasma partitionmanager "
 
-# File manager
-PKG_DESKTOP+="purpose kdegraphics-thumbnailers ffmpegthumbs "
-PKG_DESKTOP+="kde-cli-tools dolphin-plugins "
+# kde-applications
+PKG_DESKTOP+="dolphin dolphin-plugins dragon filelight "
+PKG_DESKTOP+="gwenview kamera kamoso kate "
+PKG_DESKTOP+="purpose kdegraphics-thumbnailers spectacle "
+PKG_DESKTOP+="kde-cli-tools kcharselect ffmpegthumbs "
+PKG_DESKTOP+="kcolorchooser kcron kdenetwork-filesharing "
+PKG_DESKTOP+="kdesdk-thumbnailers kdf kdialog kfind kget "
+PKG_DESKTOP+="kgpg kleopatra kolourpaint kompare "
+PKG_DESKTOP+="ksystemlog	kwalletmanager kwrite ocular "
+PKG_DESKTOP+="sweeper umbrello ark kcalc kdenlive khelpcenter "
+PKG_DESKTOP+="kio-extras kruler signon-kwallet-extension "
 
 # Sound
-PKG_DESKTOP+="pulseaudio paprefs "
+PKG_DESKTOP+="pulseaudio paprefs pulseaudio-alsa "
 PKG_DESKTOP+="pavucontrol alsa-utils pulseaudio-zeroconf "
 PKG_DESKTOP+="libcanberra libcanberra-pulse "
 
@@ -44,6 +52,7 @@ PKG_DESKTOP+="print-manager cups cups-pdf "
 # (Fallback) Themes
 PKG_DESKTOP+="elementary-icon-theme "
 PKG_DESKTOP+="faenza-icon-theme papirus-icon-theme deepin-icon-theme "
+PKG_DESKTOP_AUR+="numix-icon-theme-git "
 
 # Network
 PKG_DESKTOP+="networkmanager plasma-nm dnsmasq avahi nss-mdns "
@@ -52,7 +61,7 @@ PKG_DESKTOP+="networkmanager plasma-nm dnsmasq avahi nss-mdns "
 # TODO: decide on the dock... probably latte, but it's buggy
 PKG_DESKTOP+="plank latte-dock "
 
-# Install other DE related tools/plugins (also see xfce4-goodies)
+# Install other DE related tools/plugins
 PKG_DESKTOP+="dconf-editor xdg-user-dirs "
 
 # ssh
@@ -63,7 +72,7 @@ PKG_DESKTOP+="openssh ksshaskpass "
 PKG_DESKTOP+="termite "
 
 # apps
-PKG_DESKTOP+="chromium firefox-developer-edition "
+PKG_DESKTOP+="chromium firefox-developer-edition vlc "
 #TODO: create a Developer install script to install Vscode, rust, node, docker, elixir, etc
 PKG_DESKTOP_AUR+="visual-studio-code-bin brave-bin "
 
@@ -105,6 +114,17 @@ sudo sed -i 's/#Color/Color/' /etc/pacman.conf
 # hibernate configuration
 sudo mkdir -p /etc/systemd/sleep.conf.d
 sudo sh -c 'printf "[Sleep]\nHibernateMode=shutdown" > /etc/systemd/sleep.conf.d/hibernatemode.conf'
+
+# enable triple buffer to avoid screen tearing in kde
+sudo touch /etc/profile.d/kwin.sh
+sudo chmod +x /etc/profile.d/kwin.sh
+sudo sh -c 'printf "export KWIN_TRIPLE_BUFFER=1" > /etc/profile.d/kwin.sh'
+
+# prevent THE beep
+# TODO: check if I can put this instrucion here.
+# sudo touch /etc/profile.d/prevent_beep.sh
+# sudo chmod +x /etc/profile.d/prevent_beep.sh
+# sudo sh -c 'printf "xset b off" > /etc/profile.d/prevent_beep.sh'
 
 # Reduce swappiness
 sudo sh -c 'printf "vm.swappiness=10" > /etc/sysctl.d/99-sysctl.conf'
