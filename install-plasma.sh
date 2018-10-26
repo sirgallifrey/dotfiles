@@ -23,10 +23,10 @@ PKG_DESKTOP+="libva-intel-driver libvdpau-va-gl "
 PKG_DESKTOP+="sddm sddm-kcm "
 
 # system
-PKG_DESKTOP+="ntp ufw "
+PKG_DESKTOP+="ntp ufw bftpd "
 
 # plasma
-# for now, iḿ installing everyting on plasma group until I figure out what I don't need. 
+# for now, i'm installing everyting on plasma group until I figure out what I don't need. 
 PKG_DESKTOP+="plasma partitionmanager "
 
 # kde-applications
@@ -37,9 +37,14 @@ PKG_DESKTOP+="kde-cli-tools kcharselect ffmpegthumbs "
 PKG_DESKTOP+="kcolorchooser kcron kdenetwork-filesharing "
 PKG_DESKTOP+="kdesdk-thumbnailers kdf kdialog kfind kget "
 PKG_DESKTOP+="kgpg kleopatra kolourpaint kompare "
-PKG_DESKTOP+="ksystemlog	kwalletmanager kwrite ocular "
+PKG_DESKTOP+="ksystemlog kwalletmanager kwrite ocular "
 PKG_DESKTOP+="sweeper umbrello ark kcalc kdenlive khelpcenter "
 PKG_DESKTOP+="kio-extras kruler signon-kwallet-extension "
+PKG_DESKTOP+="kio-gdrive "
+
+#redshift
+PKG_DESKTOP+="redshift plasma5-applets-redshift-control "
+PKG_DESKTOP+="libappindicator-gtk3 "
 
 # Sound
 PKG_DESKTOP+="pulseaudio paprefs pulseaudio-alsa "
@@ -47,7 +52,7 @@ PKG_DESKTOP+="pavucontrol alsa-utils pulseaudio-zeroconf "
 PKG_DESKTOP+="libcanberra libcanberra-pulse "
 
 # Printer
-PKG_DESKTOP+="print-manager cups cups-pdf "
+PKG_DESKTOP+="print-manager cups cups-pdf polkit cups-pk-helper "
 
 # (Fallback) Themes
 PKG_DESKTOP+="elementary-icon-theme "
@@ -56,10 +61,6 @@ PKG_DESKTOP_AUR+="numix-icon-theme-git "
 
 # Network
 PKG_DESKTOP+="networkmanager plasma-nm dnsmasq avahi nss-mdns "
-
-# Docks
-# TODO: decide on the dock... probably latte, but it's buggy
-PKG_DESKTOP+="plank latte-dock "
 
 # Install other DE related tools/plugins
 PKG_DESKTOP+="dconf-editor xdg-user-dirs "
@@ -128,6 +129,22 @@ sudo sh -c 'printf "export KWIN_TRIPLE_BUFFER=1" > /etc/profile.d/kwin.sh'
 
 # Reduce swappiness
 sudo sh -c 'printf "vm.swappiness=10" > /etc/sysctl.d/99-sysctl.conf'
+
+# create police to allow printers to be managed by normal users.
+# TODO: fix printer permission.
+# this polkit trick is not working.
+#_USERNAME=$(whoami)
+#sudo groupadd printereditor
+#sudo usermod -aG printereditor $_USERNAME
+#sudo cat >/etc/polkit-1/rules.d/49-allow-passwordless-printer-admin.rules
+#<<POLICEFILE
+#polkit.addRule(function(action, subject) {
+#    if (action.id == "org.opensuse.cupspkhelper.mechanism.all-edit" &&
+#        subject.isInGroup("printereditor")){
+#        return polkit.Result.YES;
+#    }
+#});
+#POLICEFILE
 
 # copy config files
 copy_files
