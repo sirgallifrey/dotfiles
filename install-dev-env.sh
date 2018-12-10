@@ -11,3 +11,5 @@ PKG_DESKTOP_AUR+="visual-studio-code-bin "
 sudo pacman -S --needed --noconfirm ${PKG_DESKTOP}
 yaourt -S --needed --noconfirm ${PKG_DESKTOP_AUR}
 
+exec ./fix-npm-permissions.sh
+
