@@ -76,9 +76,8 @@ PKG_DESKTOP+="openssh ksshaskpass "
 PKG_DESKTOP+="termite "
 
 # apps
-PKG_DESKTOP+="chromium firefox-developer-edition vlc "
-#TODO: create a Developer install script to install Vscode, rust, node, docker, elixir, etc
-PKG_DESKTOP_AUR+="visual-studio-code-bin brave-bin "
+PKG_DESKTOP+="vlc "
+PKG_DESKTOP_AUR+="brave-bin "
 
 # Fonts, Fonts, Fonts ans more Fonts!
 PKG_DESKTOP+="ttf-dejavu ttf-ubuntu-font-family noto-fonts ttf-croscore "

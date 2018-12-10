@@ -4,26 +4,27 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export TERM="xterm-256color" 
 export usb=/run/media/$(whoami)/
+export USB=/run/media/$(whoami)/
 export RUST_BACKTRACE=1
-
-#TODO: use something other than pacman -Q
-if [[ $(pacman -Q | grep ksshaskpass) ]]; then
-  export SSH_ASKPASS=ksshaskpass
-fi
-
+export SSH_ASKPASS=ksshaskpass
 # Get color support for 'less'
 export LESS="--RAW-CONTROL-CHARS"
 
+if [[ $(which yarn) ]]; then
+  export PATH=$(yarn global dir)/node_modules/.bin:$PATH
+fi
+
+if [[ -d ~/Android/Sdk ]]; then
+  export ANDROID_HOME=~/Android/Sdk
+  export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+fi
+
+if [[ -d /opt/dotnet ]]; then
+  export PATH=/opt/dotnet:$PATH
+fi
+
 # Use colors for less, man, etc.
 [[ -f ~/.less_termcap ]] && . ~/.less_termcap
-
-# start ssh agent
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent > ~/.ssh-agent-thing
-fi
-if [[ "$SSH_AGENT_PID" == "" ]]; then
-    eval "$(<~/.ssh-agent-thing)" > /dev/null;
-fi
 
 alias ..="cd .."
 alias 1..="cd .."
@@ -83,19 +84,6 @@ alias hgrep="fc -El 0 | grep"
 alias sortnr='sort -n -r'
 alias unexport='unset'
 
-if [[ $(which yarn) ]]; then
-  export PATH=$(yarn global dir)/node_modules/.bin:$PATH
-fi
-
-function addAndroidHomeToPath {
-  export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
-}
-
-if [[ -d ~/Android/Sdk ]]; then
-  export ANDROID_HOME=~/Android/Sdk
-  addAndroidHomeToPath
-fi
-
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
 POWERLEVEL9K_STATUS_VERBOSE=false
@@ -144,6 +132,7 @@ antigen bundle lol
 antigen bundle history
 antigen bundle archlinux
 antigen bundle unixorn/autoupdate-antigen.zshplugin
+antigen bundle djui/alias-tips
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting

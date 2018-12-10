@@ -59,6 +59,14 @@ set t_Co=256
 " set , as mapleader
 let mapleader = ","
 
+" map <leader>q and <leader>w to buffer prev/next buffer
+noremap <leader>q :bp<CR>
+noremap <leader>w :bn<CR>
+
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
 " windows like clipboard
 " yank to and paste from the clipboard without prepending "* to commands
 let clipboard = has('unnamedplus') ? 'unnamedplus' : 'unnamed'
@@ -89,6 +97,13 @@ endif
 set nobackup
 set writebackup
 set noswapfile
+
+" search settings
+"set incsearch        " find the next match as we type the search
+"set hlsearch         " hilight searches by default
+" use ESC to remove search higlight
+"nnoremap <esc> :noh<return><esc>
+
 
 " suggestion for normal mode commands
 set wildmode=list:longest
@@ -129,9 +144,15 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'sheerun/vim-wombat-scheme'
 
+" Plug 'vim-scripts/FuzzyFinder'
+
 Plug 'vim-scripts/L9'
 
+Plug 'scrooloose/nerdtree'
+
 Plug 'itchyny/lightline.vim'
+
+Plug 'hail2u/vim-css3-syntax'
 
 Plug 'bling/vim-airline'
 
@@ -151,6 +172,22 @@ Plug 'elzr/vim-json'
 
 Plug 'fholgado/minibufexpl.vim'
 
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
+" start NERDTree on start-up and focus active window
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd p
+
+" map FuzzyFinder
+" noremap <leader>b :FufBuffer<cr>
+" noremap <leader>f :FufFile<cr>
+
+" set the color theme to wombat256
 colorscheme wombat
+
+" make a mark for column 80
+"set colorcolumn=120
+" and set the mark color to DarkSlateGray
+"highlight ColorColumn ctermbg=lightgray guibg=lightgray
