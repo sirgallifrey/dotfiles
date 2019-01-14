@@ -2,6 +2,10 @@
 
 - android-tools
 - rustup
+- make better documentation on the plasma install script
+- make SDDM theme work on boot
+- theme GRUB
+- make installation nicer
 
 # Wallpapers
 

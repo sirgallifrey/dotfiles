@@ -123,12 +123,6 @@ sudo touch /etc/profile.d/kwin.sh
 sudo chmod +x /etc/profile.d/kwin.sh
 sudo sh -c 'printf "export KWIN_TRIPLE_BUFFER=1" > /etc/profile.d/kwin.sh'
 
-# prevent THE beep
-# TODO: check if I can put this instrucion here.
-# sudo touch /etc/profile.d/prevent_beep.sh
-# sudo chmod +x /etc/profile.d/prevent_beep.sh
-# sudo sh -c 'printf "xset b off" > /etc/profile.d/prevent_beep.sh'
-
 # Reduce swappiness
 sudo sh -c 'printf "vm.swappiness=10" > /etc/sysctl.d/99-sysctl.conf'
 
