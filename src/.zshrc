@@ -21,6 +21,7 @@ fi
 
 if [[ -d /opt/dotnet ]]; then
   export PATH=/opt/dotnet:$PATH
+  export DOTNET_ROOT=/opt/dotnet
 fi
 
 # Use colors for less, man, etc.
