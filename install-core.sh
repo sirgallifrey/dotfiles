@@ -19,8 +19,14 @@ function create_files () {
   fi
 }
 
+# ssh
+PKG_DESKTOP+="openssh "
+
+# Terminal goodies
+PKG_DESKTOP+="vim zsh htop powerline powerline-fonts "
+
 function install_apps () {
-  sudo pacman -S vim zsh htop powerline powerline-fonts openssh
+  sudo pacman -S --needed --noconfirm ${PKG_DESKTOP}
 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
