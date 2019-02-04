@@ -12,12 +12,11 @@ function copy_files () {
 # X-Org
 # Also install special acceleration drivers for your graphics card:
 # https://wiki.archlinux.org/index.php/xorg
-PKG_DESKTOP+="xorg mesa mesa-libgl xorg-drivers "
-PKG_DESKTOP+="xf86-video-vesa gstreamer-vaapi libva-mesa-driver "
-PKG_DESKTOP+="libva-vdpau-driver libx264 "
+PKG_DESKTOP+="xorg mesa lib32-mesa mesa-libgl xorg-drivers "
+PKG_DESKTOP+="libx264 "
 
 # Intel
-PKG_DESKTOP+="libva-intel-driver libvdpau-va-gl "
+PKG_DESKTOP+="vulkan-intel "
 
 # SDDM
 PKG_DESKTOP+="sddm sddm-kcm "
