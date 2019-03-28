@@ -5,3 +5,6 @@ DIRNAME="`( cd \"$RELATIVE_PATH\" && pwd )`"
 
 sudo mkdir -p /usr/share/wallpapers/SirGallifrey/contents/images
 sudo cp -rv "$DIRNAME/wallpapers/." /usr/share/wallpapers/SirGallifrey/contents/images/
+
+sudo chmod +r -R /usr/share/wallpapers/SirGallifrey
+
