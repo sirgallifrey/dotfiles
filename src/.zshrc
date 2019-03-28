@@ -79,6 +79,7 @@ antigen bundle pip
 antigen bundle lol
 antigen bundle history
 antigen bundle unixorn/autoupdate-antigen.zshplugin
+antigen bundle zsh-users/zsh-completions
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting

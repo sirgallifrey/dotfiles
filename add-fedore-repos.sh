@@ -7,6 +7,10 @@ wget -q https://packages.microsoft.com/config/fedora/27/prod.repo
 sudo mv prod.repo /etc/yum.repos.d/microsoft-prod.repo
 sudo chown root:root /etc/yum.repos.d/microsoft-prod.repo
 
+# yarn repo
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+
+
 # Brave repositories
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
