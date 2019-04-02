@@ -1,21 +1,19 @@
+#!/bin/bash
+
 RELATIVE_PATH="`dirname \"$0\"`"
 DIRNAME="`( cd \"$RELATIVE_PATH\" && pwd )`" 
 
 function copy_files () {
   cp -rv "$DIRNAME/src/." ~/
+
+  if [[ ! $(grep "source ~/.custom-profile" ~/.profile) ]]; then
+    echo "source ~/.custom-profile" >> ~/.profile
+  fi
 }
 
 function create_files () {
-  if [ ! -r ~/.zsh_functions ]; then
-    touch ~/.zsh_functions
-  fi
-
   if [ ! -r ~/.zsh_custom  ]; then
     touch ~/.zsh_custom
-  fi
-
-  if [ ! -r ~/.zsh_aliases ]; then
-    touch ~/.zsh_aliases
   fi
 }
 
@@ -34,7 +32,7 @@ function install_apps () {
 
   chsh -s /bin/zsh
 
-  vim -c :PlugInstall
+  vim -c ":PlugInstall | qa"
 }
 
 function create_directories () {
@@ -46,3 +44,7 @@ copy_files
 create_directories
 create_files
 install_apps
+
+#export QT_QPA_PLATFORMTHEME="qt5ct"
+#export EDITOR=/usr/bin/nano
+#export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
