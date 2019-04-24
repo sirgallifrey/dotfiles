@@ -12,6 +12,9 @@ export NVM_DIR="$HOME/.nvm"
 # Use colors for less, man, etc.
 [[ -f ~/.less_termcap ]] && . ~/.less_termcap
 
+# use nvm stuff
+[[ -f /usr/share/nvm/init-nvm.sh ]] && source /usr/share/nvm/init-nvm.sh
+
 alias ..="cd .."
 alias 1..="cd .."
 alias 2..="cd ../.."
@@ -73,11 +76,6 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
-antigen bundle git-flow-avh
-antigen bundle github
-antigen bundle pip
-antigen bundle lol
-antigen bundle history
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle zsh-users/zsh-completions
 
